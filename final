@@ -1,0 +1,44 @@
+//Calls the start function to begin asking questions.
+function start (){
+    startQuiz();
+}
+
+//Defines an array to hold the questions and answers.
+var triviaQuestions = [{    
+    question: "Who is the Philadelphia 76ers second place all time leading scorer?",    
+    answer: "Allen Iverson" 
+    }, {
+    question: "What college won the 2018 NCAA March Madness Tournament?",    
+    answer: "Villanova" 
+    }, {    
+    question: "What team did Tacko Fall play for in college?",
+    answer: "UCF"  
+    }, {    
+    question: "What team lost the Stanley Cup Finals in 2010?",    
+    answer: "Philadelphia Flyers"
+    }, {
+    question: "Who led the NBA in points per game in the 2021-22 season?",
+    answer: "Joel Embiid"
+    }, {
+    question: "Who did the Philadelphia Union lose the 2022 MLS Cup final to?",
+    answer: "LAFC"
+    }];
+
+//Defines a function to ask a random question.
+function startQuiz() {
+  //Picks a random question from the array.
+  var randomQuestion = Randomizer.nextInt(0, triviaQuestions.length - 1);
+  var questionObj = triviaQuestions[randomQuestion];
+
+  //Asks the question and takes the users input.
+  var userAnswer = readLine(questionObj.question);
+
+  //Checks if if the user inputed the correct answer.
+  if (userAnswer.toLowerCase() === questionObj.answer.toLowerCase()) {
+    console.log("Correct");
+    startQuiz();
+  } else {
+    console.log("Incorrect, The correct answer was: " + questionObj.answer);
+    println("Try the Quiz again!");
+  }
+}
